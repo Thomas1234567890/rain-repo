@@ -1,18 +1,20 @@
-@import "_variables";
+@import "_variables.scss";
 
 html {
   height: 100%;
 }
-
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   height: 100%;
-  margin: 0;
   overflow: hidden;
   // background: linear-gradient(to bottom, #202020, #111119);
   background-color: #111;
   z-index: 0;
 }
-
+/////////////////////////////////////////////////rain
 .rain {
   position: absolute;
   left: 0;
@@ -46,10 +48,10 @@ body.back-row-toggle .rain.back-row {
     transform: translateY(0vh);
   }
   75% {
-    transform: translateY(90vh);
+    transform: translateY(60vh);
   }
   100% {
-    transform: translateY(90vh);
+    transform: translateY(70vh);
   }
 }
 
@@ -57,7 +59,7 @@ body.back-row-toggle .rain.back-row {
   width: 1px;
   height: 60%;
   margin-left: 7px;
-  background: linear-gradient(to bottom, red, blue);
+  background: linear-gradient(to bottom, lightblue, blue);
   animation: stem 0.5s linear infinite;
 }
 
@@ -76,36 +78,56 @@ body.back-row-toggle .rain.back-row {
   }
 }
 
-// .splat {
-//   width: 15px;
-//   height: 10px;
-//   border-top: 2px dotted rgba(255, 255, 255, 0.5);
-//   border-radius: 50%;
-//   opacity: 1;
-//   transform: scale(0);
-//   animation: splat 0.5s linear infinite;
-//   display: none;
-// }
+//////////////////////////////////////////////////clouds
 
-// body.splat-toggle .splat {
-//   display: block;
-// }
+@keyframes ani {
+  0% {
+    background-position: 100vw 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.clouds {
+  z-index: 4;
+  transform: rotate(180deg);
+  background: url(http://i.stack.imgur.com/iofJk.png) repeat-x 0 / 100% auto;
+  height: 5vh; /* this value is not important, just not zero */
+  animation: ani 10s linear infinite;
+}
 
-// @keyframes splat {
-//   0% {
-//     opacity: 1;
-//     transform: scale(0);
-//   }
-//   80% {
-//     opacity: 1;
-//     transform: scale(0);
-//   }
-//   90% {
-//     opacity: 0.5;
-//     transform: scale(1);
-//   }
-//   100% {
-//     opacity: 0;
-//     transform: scale(1.5);
-//   }
-// }
+/////////////////////////////////////////////////////header
+.header_text_container {
+  color: #fff;
+  font-family: "Merriweather", serif;
+  @include center_something(absolute);
+  font-style: italic;
+  & h1 {
+    font-size: 6rem;
+    opacity: 1;
+  }
+  & span {
+    font-size: 1rem;
+    opacity: 0.3;
+  }
+}
+
+.content_container {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  & button {
+    padding: 1rem;
+    margin: 1rem;
+    width: 10rem;
+    color: #fff;
+    border: 1px solid red;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: #333;
+    &:hover {
+    }
+  }
+}
