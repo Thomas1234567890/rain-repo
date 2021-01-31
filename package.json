@@ -1,0 +1,9 @@
+{
+  "name": "typescript",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "@types/jquery": "^3.5.5"
+  }
+}
